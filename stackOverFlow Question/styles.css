@@ -1,0 +1,48 @@
+/*circle for bls*/
+.circle {
+  height: 10vw;
+  width: 10vw;
+  background: black;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 40vh;
+}
+
+.blsAnimation {
+  animation-name: moveCenterLeft, moveLeftRight, moveLeftCenter, fadeOut;
+  /*animation-duration: 1000ms, 2000ms, 1000ms, 1000ms;*/
+  /*animation-delay: 1000ms, 2000ms, 6000ms,7000ms;*/
+  animation-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+  /*animation-iteration-count: 1, 2, 1, 1;*/
+  animation-direction: normal, alternate, normal, normal;
+  animation-fill-mode: none, none, none, forwards;
+}
+
+/*animations for bls*/
+@keyframes moveCenterLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-40vw);
+  }
+}
+
+/*iterations must be in multiples of 2*/
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(-40vw);
+  }
+  100% {
+    transform: translateX(40vw);
+  }
+}
+
+@keyframes moveLeftCenter {
+  0% {
+    transform: translateX(-40vw);
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}

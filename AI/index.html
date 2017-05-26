@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+
+<!-- If IE use the latest rendering engine -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Set the page to the width of the device and set the zoon level -->
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+<title>AI</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src ="ApiAi.min.js"></script>
+
+<style>
+.jumbotron{
+    background-color:#2E2D88;
+    color:white;
+}
+/* Adds borders for tabs */
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+.nav-tabs {
+    margin-bottom: 0;
+}
+</style>
+
+</head>
+<body>
+  <div class = "container">
+    <h1>AI-Anna</h1>
+    <h2>Messages</h2>
+    <ul id = 'chat' class="list-group">
+    </ul>
+    <div class="input-group input-group-sm">
+      <input type = "text" id = 'userMessage' class = "form-control" placeholder="Whats on your mind?">
+      <span class = "input-group-btn">
+        <button class = "btn btn-btn-default" value ='add to list' id = 'submit' >Enter</button>
+  </container>
+  <script type= "text/javascript">
+  $("document").ready(function(){
+
+    var audio = new Audio('ding.mp3');
+
+    function addChat(){
+      audio.play();
+      $('#chat').append($('<li >',{
+        text: $('#userMessage').val()
+      },).addClass("list-group-item"))
+      $('#userMessage').val('')
+      ;}
+
+    $("#submit").click(function(){
+      addChat()
+    });
+
+    $("#userMessage").keypress(function(){
+      if (event.which == 13){
+        addChat()
+      };
+    })
+
+  });
+  </script>
+</body>
+
+</html>
