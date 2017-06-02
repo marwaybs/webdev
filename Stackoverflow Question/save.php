@@ -39,7 +39,6 @@ function selfInvoker()
     $extension = pathinfo($filePath, PATHINFO_EXTENSION);
     if (!$extension || empty($extension) || !in_array($extension, $allowed)) {
         echo 'PermissionDeniedError';
-        continue;
     }
 
     if (!move_uploaded_file($tempName, $filePath)) {
