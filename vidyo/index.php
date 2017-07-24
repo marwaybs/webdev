@@ -1,12 +1,15 @@
 /* Load the VidyoClient.js script and pass the onVidyoClientLoaded callback as an onload parameter */
-<script src="https://static.vidyo.io/4.1.14.10/javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
-<script src="script.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+<head>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+  <script src="script.js"></script>
+  <script src="VidyoClient.js"></script>
 
 
+</head>
 <div id="renderer">
 
 </div>
@@ -62,5 +65,5 @@
 
 ?>
 <script>
-  var tokenID = <?php echo $b64_encoded; ?>;
+  var tokenID = <?php echo "\"". $b64_encoded ."\""; ?>;
 </script>

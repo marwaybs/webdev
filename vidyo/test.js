@@ -1,7 +1,19 @@
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
+
+
+$(function() {
+  console.log(status.state);
+  console.log("cat");
+  onVidyoClientLoaded(status.state);
+});
+
 /* When the library loads the callback will be invoked */
 function onVidyoClientLoaded(status) {
-  console.log(status.state);
   switch (status.state) {
+    console.log(status.state);
     case "READY":    // The library is operating normally
 
 
