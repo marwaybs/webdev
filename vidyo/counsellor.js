@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
+
 /* When the library loads the callback will be invoked */
 function onVidyoClientLoaded(status) {
   console.log(status.state);
@@ -19,9 +23,9 @@ function onVidyoClientLoaded(status) {
       }).then(function(vidyoConnector) {
          vidyoConnector.Connect({
            host: "prod.vidyo.io",
-           token: generatedToken,
-           displayName: "John Smith",
-           resourceId: "JohnSmithRoom",
+           token: tokenID,
+           displayName: "counsellor",
+           resourceId: "therapyElevator",
 
            // Define handlers for connection events.
            onSuccess: function()            {/* Connected */},

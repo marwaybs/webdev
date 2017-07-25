@@ -1,12 +1,11 @@
-/* Load the VidyoClient.js script and pass the onVidyoClientLoaded callback as an onload parameter */
 <head>
   <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
 
-  <script src="script.js"></script>
-  <script src="VidyoClient.js"></script>
+  <script src="client.js"></script>
+  <script src="javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
 
 
 </head>
@@ -17,9 +16,9 @@
 
 <?php
     //echo "Token Generation Sample <br />";
-    $DEV_KEY = "XXXXX" ; 			// Copy your dev key from vidyo.io dashboard
-    $APP_ID = "XXXXX.vidyo.io" ;    // Copy your app Id from vidyo.io dashboard
-    $username = "sachin" ; 			// Username, hard coded for debug purposes
+    $DEV_KEY = "" ; 			// Copy your dev key from vidyo.io dashboard
+    $APP_ID = "77dc6e.vidyo.io" ;    // Copy your app Id from vidyo.io dashboard
+    $username = "bsmarway@gmail.com" ; 			// Username, hard coded for debug purposes
     $expiresInSecs = 1000 ; 		// Generated token will expire after these many seconds
 
 	// time() by default subtracts datetime(1970, 1, 1) from the datetime
