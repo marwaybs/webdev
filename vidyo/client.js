@@ -5,6 +5,8 @@ $( document ).ready(function() {
 /* When the library loads the callback will be invoked */
 function onVidyoClientLoaded(status) {
   console.log(status.state);
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+  console.log(tokenID);
   switch (status.state) {
     case "READY":    // The library is operating normally
 
@@ -43,30 +45,6 @@ function onVidyoClientLoaded(status) {
       }).catch(function() {
         console.error("CreateVidyoConnector Failed");
       });
-
-      vidyoConnector.RegisterParticipantEventListener(
-      {
-        onJoined: function(participant) { /* Participant Joined */ },
-        onLeft: function(participant)   { /* Participant Left */ },
-        onDynamicChanged: function(participants, cameras) { /* Ordered array of participants according to rank */ },
-        onLoudestChanged: function(participant, audioOnly) { /* Current loudest speaker */ }
-      }).then(function() {
-        console.log("RegisterParticipantEventListener Success");
-      }).catch(function() {
-        console.err("RegisterParticipantEventListener Failed");
-      });
-      /* Register to receive chat messages */
-      vidyoConnector.RegisterMessageEventListener({
-        onChatMessageReceived: function(participant, chatMessage) { /* Message received from other participant */ }
-      }).then(function() {
-        console.log("RegisterMessageEventListener Success");
-      }).catch(function() {
-        console.err("RegisterMessageEventListener Failed");
-      });
-
-      /* Send chat message */
-      vidyoConnector.SendChatMessage("Hello");
-
 
       break;
     case "RETRYING":     // The library operating is temporarily paused

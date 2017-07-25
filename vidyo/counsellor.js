@@ -55,17 +55,7 @@ function onVidyoClientLoaded(status) {
       }).catch(function() {
         console.err("RegisterParticipantEventListener Failed");
       });
-      /* Register to receive chat messages */
-      vidyoConnector.RegisterMessageEventListener({
-        onChatMessageReceived: function(participant, chatMessage) { /* Message received from other participant */ }
-      }).then(function() {
-        console.log("RegisterMessageEventListener Success");
-      }).catch(function() {
-        console.err("RegisterMessageEventListener Failed");
-      });
 
-      /* Send chat message */
-      vidyoConnector.SendChatMessage("Hello");
 
 
       break;
