@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Token Generation php script</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css"/>
   </head>
   <body>
     <p><?php echo "Token Generation Sample <br />";
