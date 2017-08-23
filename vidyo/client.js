@@ -16,7 +16,7 @@ function onVidyoClientLoaded(status) {
       /* After the VidyoClient is successfully initialized a global VC object will become available  */
 
       VC.CreateVidyoConnector({
-        viewId: "renderer",                            // Div ID where the composited video will be rendered, see VidyoConnector.html
+        viewId: "null",                            // Div ID where the composited video will be rendered, see VidyoConnector.html
         viewStyle: "VIDYO_CONNECTORVIEWSTYLE_Default", // Visual style of the composited renderer
         remoteParticipants: 16,                        // Maximum number of participants
         logFileFilter: "warning all@VidyoConnector info@VidyoClient",
@@ -42,6 +42,117 @@ function onVidyoClientLoaded(status) {
           }).catch(function() {
               console.error("ConnectCall Failed");
           });
+          vidyoConnector.RegisterParticipantEventListener(
+          {
+            onJoined: function(participant) { /* Participant Joined */ },
+            onLeft: function(participant)   { /* Participant Left */ },
+            onDynamicChanged: function(participants, cameras) { /* Ordered array of participants according to rank */ },
+            onLoudestChanged: function(participant, audioOnly) { /* Current loudest speaker */ }
+          }).then(function() {
+            console.log("RegisterParticipantEventListener Success");
+          }).catch(function() {
+            console.err("RegisterParticipantEventListener Failed");
+          });
+          /* JavaScript Example: */
+
+          /* custom local preview */
+          vidyoConnector.RegisterLocalCameraEventListener({
+            onAdded: function(localCamera) {
+                /* New camera is available. */
+            },
+            onRemoved: function(localCamera) {
+                /* Existing camera became unavailable. */
+                if ( /* the removed camera is the selected camera */ ) {
+                    vidyoConnector.HideView({ viewId: "Div where camera was rendered" });
+                }
+            },
+            onSelected: function(localCamera) {
+              /* Camera was selected by user or automatically */
+              vidyoConnector.AssignViewToLocalCamera({
+                viewId: "local",
+                localCamera: localCamera,
+                displayCropped: true,
+                allowZoom: false
+              });
+            },
+            onStateUpdated: function(localCamera, state) { /* Camera state was updated */ }
+          }).then(function() {
+            console.log("RegisterLocalCameraEventListener Success");
+          }).catch(function() {
+            console.error("RegisterLocalCameraEventListener Failed");
+          });
+
+          /* Local camera change initiated by user. Note: this is an arbitrary function name. */
+          function handleCameraChange() {
+            /* Hide view of previously selected camera. */
+            vidyoConnector.HideView({
+              viewId: "local"
+            });
+            /* Select new camera */
+            vidyoConnector.SelectLocalCamera({
+              localCamera: camera
+            });
+          }
+
+          /******************************************************************************/
+
+          /* custom remote participant's source view */
+          vidyoConnector.RegisterRemoteCameraEventListener({
+            onAdded: function(remoteCamera, participant) {
+              /* New camera is available. */
+              if (/* This camera is desired to be viewed */) {
+                vidyoConnector.AssignViewToRemoteCamera({
+                  viewId: "remote",
+                  remoteCamera: remoteCamera,
+                  displayCropped: true,
+                  allowZoom: false
+                });
+              }
+            },
+            onRemoved: function(remoteCamera, participant) {
+              /* Existing camera became unavailable. */
+              if (/* This camera was being viewed */) {
+                vidyoConnector.HideView({
+                  viewId: "remote"
+                });
+              }
+            },
+            onStateUpdated: function(remoteCamera, participant, state) { /* Camera state was updated */ }
+          }).then(function() {
+            console.log("RegisterRemoteCameraEventListener Success");
+          }).catch(function() {
+            console.error("RegisterRemoteCameraEventListener Failed");
+          });
+
+          /******************************************************************************/
+
+          /* custom remote participant's window share view */
+          vidyoConnector.RegisterRemoteWindowShareEventListener({
+            onAdded: function(remoteWindowShare, participant) {
+              /* New window is available for sharing. */
+              if (/* This is the window that is desired to view */) {
+                vidyoConnector.AssignViewToRemoteWindowShare({
+                  viewId: null,
+                  remoteWindowShare: remoteWindowShare,
+                  displayCropped: true,
+                  allowZoom: false
+                });
+              }
+            },
+            onRemoved: function(remoteWindowShare, participant) {
+              /* Existing window is no longer available for sharing */
+              if (/* This is the window that was being viewed */) {
+                vidyoConnector.HideView({
+                  viewId: null
+                });
+              }
+            }
+          }).then(function() {
+            console.log("RegisterRemoteWindowShareEventListener Success");
+          }).catch(function() {
+            console.error("RegisterRemoteWindowShareEventListener Failed");
+          });
+
       }).catch(function() {
         console.error("CreateVidyoConnector Failed");
       });

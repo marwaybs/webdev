@@ -4,9 +4,6 @@
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
 
-  <script src="client.js"></script>
-  <script src="javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
-
 
 </head>
 <div id="renderer">
@@ -16,7 +13,7 @@
 
 <?php
     //echo "Token Generation Sample <br />";
-    $DEV_KEY = "" ; 			// Copy your dev key from vidyo.io dashboard
+    $DEV_KEY = "a4eddd7e1577439b8c379d78cafd3973" ; 			// Copy your dev key from vidyo.io dashboard
     $APP_ID = "77dc6e.vidyo.io" ;    // Copy your app Id from vidyo.io dashboard
     $username = "bsmarway@gmail.com" ; 			// Username, hard coded for debug purposes
     $expiresInSecs = 1000 ; 		// Generated token will expire after these many seconds
@@ -66,3 +63,5 @@
 <script>
   var tokenID = <?php echo "\"". $b64_encoded ."\""; ?>;
 </script>
+<script src="client.js"></script>
+<script src="javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
