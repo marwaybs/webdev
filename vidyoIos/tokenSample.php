@@ -6,7 +6,7 @@
   </head>
   <body>
     <p><?php echo "Token Generation Sample <br />";
-    $DEV_KEY = "rUlaMASgt1Byi4Kp3sKYDeQzo" ; 			// Copy your dev key from vidyo.io dashboard
+    $DEV_KEY = "b5ef2997da544e2f9ea8f4f1c7510bc1" ; 			// Copy your dev key from vidyo.io dashboard
     $APP_ID = "77dc6e.vidyo.io" ;    // Copy your app Id from vidyo.io dashboard
     $username = "bsmarway@gmail.com" ; 			// Username, hard coded for debug purposes
     $expiresInSecs = 1000 ; 		// Generated token will expire after these many seconds
