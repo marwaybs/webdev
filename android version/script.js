@@ -7,3 +7,6 @@ function getAndroidVersion(ua) {
 getAndroidVersion(); //"4.2.1"
 parseInt(getAndroidVersion(), 10); //4
 console.log(parseFloat(getAndroidVersion())); //4.2
+
+
+document.getElementById('version').innerHTML = parseFloat(getAndroidVersion());
